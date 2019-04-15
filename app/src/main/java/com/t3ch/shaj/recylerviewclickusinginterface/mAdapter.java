@@ -21,10 +21,14 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.mViewHolder> {
     List<String> list;
 
 
-    public mAdapter(Context context, List<String> list) {
+    public mAdapterClickListener mAdapterClickListener;
+
+
+    public mAdapter(Context context, List<String> list, mAdapterClickListener mAdapterClickListener) {
 
         this.context = context;
         this.list = list;
+        this.mAdapterClickListener = mAdapterClickListener;
 
     }
 
@@ -48,7 +52,9 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.mViewHolder> {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, String.valueOf(i), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, String.valueOf(i), Toast.LENGTH_SHORT).show();
+
+                mAdapterClickListener.onItemClicked(i);
 
             }
         });

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        adapter = new mAdapter(this, list);
+        adapter = new mAdapter(this, list, new mAdapterClickListener() {
+            @Override
+            public void onItemClicked(int pos) {
+                Toast.makeText(MainActivity.this, String.valueOf(pos), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(adapter);
 
 
