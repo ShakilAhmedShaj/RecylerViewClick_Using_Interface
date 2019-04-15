@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -38,9 +39,20 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.mViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull mViewHolder mViewHolder, int i) {
+    public void onBindViewHolder(@NonNull mViewHolder mViewHolder, final int i) {
 
         mViewHolder.textView.setText(list.get(i));
+
+
+        mViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(context, String.valueOf(i), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
     }
 
